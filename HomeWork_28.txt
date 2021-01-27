@@ -1,0 +1,47 @@
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MyFirstTest {
+
+   public static WebDriver driver;
+   @Test
+   public void login() throws InterruptedException {
+
+   System.setProperty("webdriver.chrome.driver", "G:\\Chrome Driver\\chromedriver.exe");
+   driver=new ChromeDriver();
+   driver.manage().window().maximize();
+   driver.get("http://users.bugred.ru/user/login/index.html");
+driver.findElement(By.name("login")).sendKeys("pablo555@mail.ru");
+      driver.findElement(By.name("password")).sendKeys("123");
+      driver.findElement(By.xpath("/html/body/div[3]/div[1]/div[1]/form/table/tbody/tr[3]/td[2]/input")).click();
+      WebElement users = driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"));
+      Assert.assertEquals(true, users.isDisplayed());
+
+
+       driver.findElement(By.name("q")).sendKeys("Pablo555");
+       driver.findElement(By.xpath("/html/body/div[3]/form/table/tbody/tr[5]/td[1]/button")).click();
+       WebElement look = driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[3]/a/span"));
+       Assert.assertEquals(true, look.isDisplayed());
+
+
+       driver.findElement(By.xpath("//*[@id=\"fat-menu\"]/a")).click();
+       driver.findElement(By.xpath("//*[@id=\"fat-menu\"]/ul/li[3]/a")).click();
+       driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a")).click();
+      driver.findElement(By.name("name")).sendKeys("HomeWork23");
+       driver.findElement(By.name("email")).sendKeys("HomeWork23@mail.ru");
+       driver.findElement(By.cssSelector("body > div.content > div.row > div:nth-child(2) > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > input[type=password]")).sendKeys("123");
+       driver.findElement(By.cssSelector("body > div.content > div.row > div:nth-child(2) > form > table > tbody > tr:nth-child(4) > td:nth-child(2) > input")).click();
+
+       driver.findElement(By.xpath("//*[@id=\"fat-menu\"]/a")).click();
+       driver.findElement(By.xpath("//*[@id=\"fat-menu\"]/ul/li[1]/a")).click();
+       driver.findElement(By.cssSelector("body > div.content > div.row > div > div.col-md-8.center > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > select > option:nth-child(2)")).click();
+       driver.findElement(By.name("birthday")).sendKeys("11.1.2000");
+       driver.findElement(By.name("date_start")).sendKeys("26.1.2021");
+       driver.findElement(By.name("hobby")).sendKeys("GYM");
+       driver.findElement(By.name("inn")).sendKeys("12121212");
+       driver.findElement(By.cssSelector("body > div.content > div.row > div > div.col-md-8.center > form > table > tbody > tr:nth-child(8) > td:nth-child(2) > input")).click();
